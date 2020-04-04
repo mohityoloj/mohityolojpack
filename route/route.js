@@ -7,7 +7,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 var mongoose=require('mongoose');
 var User=require('../model/User.js');
+var User=require('../model/Request.js');
 var upload=require('../util/photo.js');
+var multer=require('multer');
+var attachment=multer({dest:'uploads/'});
 var dotenv=require('dotenv');
 dotenv.config();
 var dburl=process.env.dburl;
@@ -18,7 +21,7 @@ console.log('db connected');
 
 // method to register users
 router.post('/users',upload.array('filess'),function(req,res){
-	console.log('services'+req.body.name.services);
+	console.log('request'+req.body);
 	console.log(req.files);
 	var ar=req.files;
 	var photo=ar[0]!=null?ar[0].path:'';
@@ -77,7 +80,7 @@ router.get('/users/role/:role',function(req,res){
 	});
 });
 
-// get all users by id
+// get users by id
 router.get('/users/:id',function(req,res){
 	User.find({_id:req.params.id},function(err,response){
 		if(err){
@@ -90,10 +93,10 @@ router.get('/users/:id',function(req,res){
 });
 
 //update user
-app.put('/users',function(req,res){
-	id=req.body._id;
-	newdata={name:req.body.name,phone_number:req.body.phone_number,photo:req.body.photo}
-	User.findByIdAndUpdate({id},newdata,function(err,response){
+router.put('/users/:id',function(req,res){
+	id=req.params.id;
+	newdata={name:req.body.name,phone_number:req.body.phone_number,subcategory:req.body.subcategory}
+	User.updateOne({_id:id},newdata,function(err,response){
 		if(err){
 			res.json({status:500,message:err.message});
 		    console.log(err);
@@ -103,4 +106,113 @@ app.put('/users',function(req,res){
 		}
 	});
 });
-  module.exports=router;
+
+// Delete user by id
+router.delete('/users/:id',function(req,res){
+	id=req.params.id;
+	
+	User.deleteOne({_id:id},function(err,response){
+		if(err){
+			res.json({status:500,message:err.message});
+		    console.log(err);
+		}
+		else{
+			res.json({status:200,message: 'deleted successfully'})
+		}
+	});
+});
+  
+  
+ // find services by category or provider name
+router.get('/services/:param',function(req,res){
+	param=req.params.param;
+	User.find({ 
+    $or: [ 
+        { 'name': param }, 
+        { 'category': param }
+      ],
+      $and:[{'role':process.env.role}] 
+     },function(err,response){
+		if(err){
+			res.json({status:500,message:err.message});
+		}
+		else{
+			res.json({status:200,response});
+		}
+	});
+}); 
+
+
+// send Request
+router.post('/request',function(req,res){
+	//console.log('request'+req.body);
+	//console.log(req.file);
+    var RequestObj=new Request({userid:req.body.userid,providerid:req.body.providerid,status:'pending',created:new Date(),file:''});
+    RequestObj.save(function(err,response){
+        if(err){ res.json({status:500,message:err.message});
+		console.log(err);
+		}
+		else{
+			res.json({status:200,message: 'request sent successfully'})
+		}
+	});
+	
+});
+// get all request
+router.get('/request',function(req,res){
+	Request.find({},function(err,response){
+		if(err){
+			res.json({status:500,message:err.message});
+		}
+		else{
+			res.json({status:200,response});
+		}
+	});
+});
+// get all pending request by provider id
+router.get('/pending/:id',function(req,res){
+	Request.find({providerid:req.params.id,$and:[{'status':process.env.pending}] },function(err,response){
+		if(err){
+			res.json({status:500,message:err.message});
+		}
+		else{
+			res.json({status:200,response});
+		}
+	});
+});
+
+
+// approve user request
+router.put('/approve/:id',function(req,res){
+	id=req.params.id;
+	
+	newdata={'status':'approved'};
+	console.log(newdata);
+	Request.updateOne({_id:id},newdata,function(err,response){
+		if(err){
+			res.json({status:500,message:err.message});
+		    console.log(err);
+		}
+		else{
+			res.json({status:200,message: 'approved successfully'})
+		}
+	});
+});
+
+// upload file after approval
+router.put('/upload/:id',attachment.single('attachment'),function(req,res){
+	id=req.params.id;
+	console.log(req.file);
+	newdata={'file':req.file.path};
+	Request.updateOne({_id:id,$and:[{'status':'approved'}]},newdata,function(err,response){
+		if(err){
+			res.json({status:500,message:err.message});
+		    console.log(err);
+		}
+		else{
+			res.json({status:200,message: 'uploaded successfully'})
+		}
+	});
+});
+
+module.exports=router;
