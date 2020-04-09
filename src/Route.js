@@ -23,10 +23,10 @@ export default class Routes extends Component {
                  {/* <Route  exact path="/" component={NavBar} /> */}
                  <Route exact path="/" render={props=>
                 <Fragment>
-                {/* <NavBar/> */}
-                <PersistentDrawerLeft/>
+                <NavBar/>
+                {/* <PersistentDrawerLeft/> */}
                 {/* <PrimarySearchAppBar/> */}
-                {/* <Homepage/> */}
+                <Homepage/>
                 </Fragment>
                 
                 }/>
