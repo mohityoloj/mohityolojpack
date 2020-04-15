@@ -1,6 +1,6 @@
 const initialState={
     Name:{},
-    
+    AllCARDS:[],
     user:{id:"",messege:"",role:""}
 }
 const getUserReducer=(state=initialState,action)=>{
@@ -10,6 +10,10 @@ const getUserReducer=(state=initialState,action)=>{
          const d={...state,user:action.payload}
          console.log('state is setting to ',d);
         return { ...state, user:action.payload};
+
+
+    case "GET_ALL_CARDS":
+        return {...state,AllCARDS:action.payload}
     default:
         return state  
     }

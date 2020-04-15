@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useState}from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -34,9 +34,10 @@ const useStylesForAvatar = makeStyles((theme) => ({
     }
 }))
 
-const ImgMediaCard = () => {
+const ImgMediaCard = (props) => {
     const classesForCard = useStyles();
     const classesForAvatar = useStylesForAvatar();
+    const [data,setData]=useState({});
 
     // var kebab = document.querySelector('.kebab'),
     //      middle = document.querySelector('.middle'),
@@ -83,7 +84,7 @@ const ImgMediaCard = () => {
                     <div className="myCardContent">
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2" align='left'>
-                                Saurabh Shrijan
+                                {props.name}
           </Typography>
                             <Typography gutterBottom variant="h5" component="h2" align='left'>
                                 <hr></hr>
@@ -93,6 +94,8 @@ const ImgMediaCard = () => {
                                 across all continents except Antarctica
                                 Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
                                 across all continents except Antarctica
+                                {props.contact}
+                                {props.verified}
           </Typography>
                         </CardContent>
                     </div>

@@ -92,12 +92,12 @@ export  default class registerPartner extends React.Component{
 
   handleChange = e => {
     e.preventDefault();
-    if(e.target.files) {
-      const file=e.target.files[0];
-      if(file){
-        this.setState({[e.target.id]:file});
-      }
-    }
+    // if(e.target.files) {
+    //   const file=e.target.files[0];
+    //   if(file){
+    //     this.setState({[e.target.id]:file});
+    //   }
+    // }
     
     const { name, value } = e.target;
     console.log(e.target.value);
@@ -135,8 +135,8 @@ export  default class registerPartner extends React.Component{
     this.setState({ formErrors, [name]: value }, () => console.log(this.state));
   }
   handleFileChange=(event)=>{
-    console.log(event.target.files);
-    this.setState({image:event.target.files});
+    console.log(event.target.files[0]);
+    this.setState({image:event.target.files[0]});
   }
   render() {
     const { formErrors } = this.state;
@@ -224,7 +224,6 @@ export  default class registerPartner extends React.Component{
             name="pancardImg"
             id="image"
             noValidate
-            accept='image/*'
             onChange={this.handleFileChange}
             />
           </div>
