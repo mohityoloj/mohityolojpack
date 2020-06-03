@@ -25,11 +25,14 @@ import history from "../../../history";
 import FormDialog from "../../Login-PopUp/dialog";
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+<<<<<<< HEAD
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import log from '../../logger.service'
 //import {connect} from "react-redux";
 //import {Homepage} from "mohityolojpack/src/components/Homepage/homepage.js";
+=======
+>>>>>>> 2018e7828f78f03a8f5afb1d824a1b5bcde16874
 
 const drawerWidth = 240;
 
@@ -144,10 +147,14 @@ export default function PersistentDrawerLeft(){
 
 
 
+<<<<<<< HEAD
   // HandleOnChange=(event)=>{
   //   console.log('search value is...',event.target.value);
   //     this.setState({search:event.target.value.substr(0,10)});
   // }
+=======
+
+>>>>>>> 2018e7828f78f03a8f5afb1d824a1b5bcde16874
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -249,6 +256,7 @@ const onAppBardChange=(parameter)=>{
             POC Portal
           </Typography>
 
+<<<<<<< HEAD
           <div className={classes.search}>
           
               <SearchIcon />
@@ -265,6 +273,8 @@ const onAppBardChange=(parameter)=>{
             />
           </div>
 
+=======
+>>>>>>> 2018e7828f78f03a8f5afb1d824a1b5bcde16874
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="show 4 new mails" color="inherit">
@@ -332,6 +342,7 @@ const onAppBardChange=(parameter)=>{
           ))}
         </List> */}
         <List>
+<<<<<<< HEAD
           {['Inbox'].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon />:<InboxIcon/>}</ListItemIcon>
@@ -343,6 +354,11 @@ const onAppBardChange=(parameter)=>{
           {['Become a Partner'].map((text, index) => (
             <ListItem button key={text} onClick={(e)=>history.push('/registerPartner')}>
               <ListItemIcon>{index % 2 === 0 ? <MailIcon />:<MailIcon/>}</ListItemIcon>
+=======
+          {['Inbox',  'Become A Partner'].map((text, index) => (
+            <ListItem button key={text} onClick={(e)=>history.push('/registerPartner')}>
+              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+>>>>>>> 2018e7828f78f03a8f5afb1d824a1b5bcde16874
               <ListItemText primary={text} />
             </ListItem>
           ))}

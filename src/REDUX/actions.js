@@ -9,12 +9,18 @@ const LoginUser = user => {
         .then(res => {
           //console.log("the response data is line 1 ",res);
           if(res.data.status ===500){
+<<<<<<< HEAD
             log('user entered invalid Credentials')
+=======
+>>>>>>> 2018e7828f78f03a8f5afb1d824a1b5bcde16874
             dispatch({type:"LOGIN",payload:{id:'',messege:'Invalid Credentials',role:''}});
           }
           //console.log("the response data is ",res.data.data[0]._id);
           else{
+<<<<<<< HEAD
             log('user logged in')
+=======
+>>>>>>> 2018e7828f78f03a8f5afb1d824a1b5bcde16874
             dispatch({ type: "LOGIN", payload: {id:res.data.data[0]._id,messege:res.data.message,role:res.data.data[0].role}});
           }
         })

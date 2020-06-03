@@ -28,8 +28,12 @@ const emailRegex = RegExp(
   // /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 );
 const phoneNumberRegex = RegExp(
+<<<<<<< HEAD
   /^[6-9]\d{9}$/
   // /^[0][1-9]\d{9}$|^[1-9]\d{9}$/
+=======
+  /^[0][1-9]\d{9}$|^[1-9]\d{9}$/
+>>>>>>> 2018e7828f78f03a8f5afb1d824a1b5bcde16874
 );
 const GSTIN =RegExp(
  /^\d{2}[A-Z]{5}\d{4}[A-Z]{1}[A-Z\d]{1}[Z]{1}[A-Z\d]{1}/

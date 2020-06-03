@@ -8,7 +8,10 @@ import { useTheme } from '@material-ui/core/styles';
 import CloseIcon from '@material-ui/icons/Close';
 import { IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+<<<<<<< HEAD
 import log from '../logger.service'
+=======
+>>>>>>> 2018e7828f78f03a8f5afb1d824a1b5bcde16874
 
 const useStyles = makeStyles((theme) => ({
     dialog:{
@@ -16,12 +19,20 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 export default function FormDialog() {
+<<<<<<< HEAD
   const classes = useStyles();  
+=======
+    const classes = useStyles();
+    
+>>>>>>> 2018e7828f78f03a8f5afb1d824a1b5bcde16874
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const handleClickOpen = () => {
+<<<<<<< HEAD
     log('user clicked on login')
+=======
+>>>>>>> 2018e7828f78f03a8f5afb1d824a1b5bcde16874
     setOpen(true);
   };
 

@@ -1,9 +1,12 @@
 import React from 'react';
 import {Row,Col} from "react-bootstrap";
 import {Container} from "react-bootstrap";
+<<<<<<< HEAD
 import { MDBCol } from "mdbreact";
 import Button from "@material-ui/core/Button"
 
+=======
+>>>>>>> 2018e7828f78f03a8f5afb1d824a1b5bcde16874
 import {connect} from "react-redux";
 import ImgMediaCard from "./cards/cards.js";
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -36,8 +39,12 @@ constructor(props){
       return values.map(elements=>{
          return (
          <Col md={4} xs={12} style={{marginTop:'1rem'}}>
+<<<<<<< HEAD
          <ImgMediaCard key={Math.random()}
          id={elements.id} 
+=======
+         <ImgMediaCard key={Math.random()} 
+>>>>>>> 2018e7828f78f03a8f5afb1d824a1b5bcde16874
          name={elements.name} 
          photo={elements.photo}
          category={elements.category}
@@ -140,11 +147,14 @@ else{
             value={this.state.search}
             onChange={this.HandleOnChange.bind(this)}
             /> */}
+<<<<<<< HEAD
 
             {/* <MDBCol md="6">
       <input className="form-control" type="text" placeholder="Search" aria-label="Search" />
     </MDBCol> */}
 
+=======
+>>>>>>> 2018e7828f78f03a8f5afb1d824a1b5bcde16874
             <form className={this.handleSearchStyle.root} noValidate autoComplete="off">
             <TextField 
             

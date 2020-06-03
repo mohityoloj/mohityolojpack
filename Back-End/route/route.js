@@ -12,6 +12,7 @@ var dotenv=require('dotenv');
 dotenv.config();
 var dburl=process.env.dburl;
 console.log('dbname'+dburl);
+<<<<<<< HEAD
 const shortid = require('shortid');
 mongoose.connect(dburl,{useNewUrlParser:true,useUnifiedTopology:true});
 console.log('db connected');
@@ -27,6 +28,14 @@ router.post('/log',(req,res)=>{
 })
 
 // method to register users
+=======
+
+mongoose.connect(dburl,{useNewUrlParser:true,useUnifiedTopology:true});
+console.log('db connected');
+
+// method to register users
+
+>>>>>>> 2018e7828f78f03a8f5afb1d824a1b5bcde16874
 router.post('/users',upload.array('files'),function(req,res){
 	console.log('request data for registration ',req.body);
 	//console.log(req.files);
@@ -45,6 +54,7 @@ router.post('/users',upload.array('files'),function(req,res){
 		 pancard=ar[1]!=null?ar[1].path:'';
 	}
 	
+<<<<<<< HEAD
 	// var idGenerate= function(){
 	// 	randNum= Math.random().toString(20).substr(2, 6);
 	// 	return "YOL"+randNum;
@@ -53,6 +63,11 @@ router.post('/users',upload.array('files'),function(req,res){
 		// var photo=ar[0]!=null?ar[0].path:'';
 	// var pancard=ar[1]!=null?ar[1].path:'';
     var UserObj=new User({name:req.body.name,password:req.body.password,email:req.body.email, id:shortid.generate(), 
+=======
+	// var photo=ar[0]!=null?ar[0].path:'';
+	// var pancard=ar[1]!=null?ar[1].path:'';
+    var UserObj=new User({name:req.body.name,password:req.body.password,email:req.body.email,
+>>>>>>> 2018e7828f78f03a8f5afb1d824a1b5bcde16874
 	                phone_number:req.body.phone_number,photo:req.body.photo,role:req.body.role,
 					verified:false,created:new Date(),photo:photo,pancard:pancard,category:req.body.category,subcategory:req.body.subcategory});
     UserObj.save(function(err,response){
@@ -89,7 +104,10 @@ router.get('/users',function(req,res){
 	User.find({},function(err,response){
 		if(err){
 			res.json({status:500,message:err.message});
+<<<<<<< HEAD
 			next(err)
+=======
+>>>>>>> 2018e7828f78f03a8f5afb1d824a1b5bcde16874
 		}
 		else{
 			res.json({status:200,response});
@@ -109,11 +127,18 @@ router.get('/users/role/:role',function(req,res){
 });
 
 // get all users by id
+<<<<<<< HEAD
 router.get('/users/:id',function(req,res,next){
 	User.find({_id:req.params.id},function(err,response){
 		if(err){
 			err.status=500
 			next(err)
+=======
+router.get('/users/:id',function(req,res){
+	User.find({_id:req.params.id},function(err,response){
+		if(err){
+			res.json({status:500,message:err.message});
+>>>>>>> 2018e7828f78f03a8f5afb1d824a1b5bcde16874
 		}
 		else{
 			res.json({status:200,response});
@@ -122,21 +147,33 @@ router.get('/users/:id',function(req,res,next){
 });
 
 //update user
+<<<<<<< HEAD
 app.put('/users',function(req,res,next){
+=======
+app.put('/users',function(req,res){
+>>>>>>> 2018e7828f78f03a8f5afb1d824a1b5bcde16874
 	id=req.body._id;
 	newdata={name:req.body.name,phone_number:req.body.phone_number,photo:req.body.photo}
 	User.findByIdAndUpdate({id},newdata,function(err,response){
 		if(err){
+<<<<<<< HEAD
 			err.status=500
 		    next(err)
+=======
+			res.json({status:500,message:err.message});
+		    console.log(err);
+>>>>>>> 2018e7828f78f03a8f5afb1d824a1b5bcde16874
 		}
 		else{
 			res.json({status:200,message: 'updated successfully'})
 		}
 	});
 });
+<<<<<<< HEAD
 // app.get('/provider/:location',function(req,res,nex){
 // 	location=req.params.location
 // 	User.find({$and:[{role:'P'},{location:location}]})
 // })
+=======
+>>>>>>> 2018e7828f78f03a8f5afb1d824a1b5bcde16874
   module.exports=router;

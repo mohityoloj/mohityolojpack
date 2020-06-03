@@ -16,9 +16,13 @@ const styles = theme => ({
   }
 });
 const emailRegex = RegExp(
+<<<<<<< HEAD
   /^([a-zA-Z0-9\'_]+)(\.[a-zA-Z0-9\'_]+)*@([a-zA-Z0-9]([a-zA-Z0-9]{0,61}[a-zA-Z0-9])?\.)([a-zA-Z]{2,3})$/
   // /^([a-zA-Z0-9\'_]+)(\.[a-zA-Z0-9\'_]+)*@([a-zA-Z0-9]([a-zA-Z0-9]{0,61}[a-zA-Z0-9])?\.)*([a-zA-Z]{2,3})$/
    // /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+=======
+    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+>>>>>>> 2018e7828f78f03a8f5afb1d824a1b5bcde16874
   );
   const formValid = ({ formErrors, ...rest }) => {
     let valid = true;
@@ -93,6 +97,10 @@ handleOnChange=(e)=>{
 render(){
     const { classes } = this.props;
     const { formErrors } = this.state;
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 2018e7828f78f03a8f5afb1d824a1b5bcde16874
     if(this.props.user.messege==="success !"){
       this.props.close();
       return (
@@ -100,6 +108,11 @@ render(){
       )
     }
     return(
+<<<<<<< HEAD
+=======
+        
+           
+>>>>>>> 2018e7828f78f03a8f5afb1d824a1b5bcde16874
                 <div className={classes.margin}>
                      <form onSubmit={this.handleOnSubmit}>
                     <Grid container spacing={10} alignItems="flex-end" style={{marginTop:"1rem"}}>

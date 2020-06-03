@@ -16,6 +16,7 @@ const styles = theme => ({
   }
 });
 
+<<<<<<< HEAD
 const nameRegex=RegExp(
   
    /^(([a-zA-Z]+\s)*[a-zA-Z]+){3,}$/
@@ -32,6 +33,14 @@ const emailRegex = RegExp(
   );
   const passwordRegex=RegExp(
     /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{6,}$/
+=======
+
+const emailRegex = RegExp(
+    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+  );
+  const phoneNumberRegex=RegExp(
+    /^[0][1-9]\d{9}$|^[1-9]\d{9}$/
+>>>>>>> 2018e7828f78f03a8f5afb1d824a1b5bcde16874
   );
   const formValid = ({ formErrors, ...rest }) => {
     let valid = true;
@@ -103,10 +112,15 @@ const emailRegex = RegExp(
         let formErrors = { ...this.state.formErrors };
         switch (name) {
           case "Name":
+<<<<<<< HEAD
             formErrors.Name = nameRegex.test(value)
           ? ""
           :"atleast 3 characters having alphabets and spaces only "
 //              value.length < 3 ? "minimum 3 characaters required" : "";
+=======
+            formErrors.Name =
+              value.length < 3 ? "minimum 3 characaters required" : "";
+>>>>>>> 2018e7828f78f03a8f5afb1d824a1b5bcde16874
             break;
           case "email":
             formErrors.email = emailRegex.test(value)
@@ -114,15 +128,24 @@ const emailRegex = RegExp(
               : "invalid email address";
             break;
           case "password":
+<<<<<<< HEAD
             formErrors.password = passwordRegex.test(value)
             ? ""
             : "min 6 characters, with at least a symbol, upper and lower case letters and a number ";
             // value.length < 6 ? "min 6 characters, with at least a symbol, upper and lower case letters and a number " : "";
+=======
+            formErrors.password =
+              value.length < 6 ? "minimum 6 characaters required" : "";
+>>>>>>> 2018e7828f78f03a8f5afb1d824a1b5bcde16874
             break;
           case "phoneNumber":
             formErrors.phoneNumber = phoneNumberRegex.test(parseInt(value))
             ? ""
+<<<<<<< HEAD
             : "Enter vaid 10 digit mobile number";
+=======
+            : "Enter 10 digit mobile number";
+>>>>>>> 2018e7828f78f03a8f5afb1d824a1b5bcde16874
             break;
           default:
             break;
